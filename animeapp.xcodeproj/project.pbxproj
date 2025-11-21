@@ -27,6 +27,7 @@
 		5AD935112ED0103500B63739 /* animeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = animeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD9351E2ED0103700B63739 /* animeappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = animeappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD935282ED0103700B63739 /* animeappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = animeappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AD9355C2ED0AA1B00B63739 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +76,7 @@
 		5AD935082ED0103500B63739 = {
 			isa = PBXGroup;
 			children = (
+				5AD9355C2ED0AA1B00B63739 /* README.md */,
 				5AD935132ED0103500B63739 /* animeapp */,
 				5AD935212ED0103700B63739 /* animeappTests */,
 				5AD9352B2ED0103700B63739 /* animeappUITests */,
