@@ -1,0 +1,77 @@
+//
+//  FilmDetailViewModel.swift
+//  animeapp
+//
+//  Created by Vignesh Iyer on 11/22/25.
+//
+
+import Foundation
+import Observation
+
+@Observable
+class FilmDetailViewModel {
+    
+    enum State: Equatable {
+        case idle
+        case loading
+        case loaded([Person])
+        case error(String)
+    }
+    
+    var state: State = .idle
+    
+    private let service: GhibliService
+    
+    init(service: GhibliService = DefaultGhibliService()) {
+        self.service = service
+    }
+    
+    func fetch(for film: Film) async {
+        guard state == .idle else { return }
+        
+        state = .loading
+        
+        var loadedPeople: [Person] = []
+        
+        do {
+            try await withThrowingTaskGroup(of: Person.self) { group in
+                for personInfoUrl in film.people {
+                    group.addTask {
+                        return try await self.service.fetchPerson(from: personInfoUrl)
+                    }
+                }
+                
+                // collect results as they complete
+                for try await person in group {
+                    loadedPeople.append(person)
+                }
+            }
+            
+            state = .loaded(loadedPeople)
+        } catch let error as APIError {
+            self.state = .error(error.localizedDescription ?? "unknown error")
+        } catch {
+            self.state = .error("unknown error")
+        }
+    }
+}
+
+import Playgrounds
+
+#Playground {
+    let service = MockGhibliService()
+    let vm = FilmDetailViewModel(service: service)
+    let film = service.fetchFilm()
+    await vm.fetch(for: film)
+    
+    switch vm.state {
+    case .loading: print("loading")
+    case .idle: print("idle")
+    case .loaded(let people):
+        for person in people {
+            print(person)
+        }
+    case .error(let message):
+        print("error: \(message)")
+    }
+}

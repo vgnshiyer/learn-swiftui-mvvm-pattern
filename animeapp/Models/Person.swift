@@ -8,7 +8,7 @@
 import Foundation
 import Playgrounds
 
-struct Person: Codable, Identifiable {
+struct Person: Codable, Identifiable, Equatable, Hashable {
     let id: String
     let name: String
     let gender: String

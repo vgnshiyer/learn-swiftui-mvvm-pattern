@@ -19,8 +19,17 @@ struct FilmListView: View {
             case .loading:
                 ProgressView{ Text("Loading...") }
             case .loaded(let films):
-                List(films) {
-                    Text($0.title)
+                List(films) { film in
+                    NavigationLink(value: film) {
+                        HStack {
+                            FilmImageView(url: film.image)
+                                .frame(width: 100, height: 150)
+                            Text(film.title)
+                        }
+                    }
+                }
+                .navigationDestination(for: Film.self) { film in
+                    FilmDetailView(film: film)
                 }
             case .error(let error):
                 Text(error).foregroundStyle(.pink)
