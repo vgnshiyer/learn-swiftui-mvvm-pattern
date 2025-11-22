@@ -28,6 +28,8 @@
 		5AD9351E2ED0103700B63739 /* animeappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = animeappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD935282ED0103700B63739 /* animeappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = animeappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD9355C2ED0AA1B00B63739 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
+		5AD935682ED2425C00B63739 /* Screenshot 2025-11-22 at 11.11.15 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screenshot 2025-11-22 at 11.11.15 AM.png"; sourceTree = "<group>"; };
+		5AD9356A2ED243FF00B63739 /* SwiftUI Architecture Blueprint.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "SwiftUI Architecture Blueprint.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -76,11 +78,13 @@
 		5AD935082ED0103500B63739 = {
 			isa = PBXGroup;
 			children = (
+				5AD935682ED2425C00B63739 /* Screenshot 2025-11-22 at 11.11.15 AM.png */,
 				5AD9355C2ED0AA1B00B63739 /* README.md */,
 				5AD935132ED0103500B63739 /* animeapp */,
 				5AD935212ED0103700B63739 /* animeappTests */,
 				5AD9352B2ED0103700B63739 /* animeappUITests */,
 				5AD935122ED0103500B63739 /* Products */,
+				5AD9356A2ED243FF00B63739 /* SwiftUI Architecture Blueprint.pdf */,
 			);
 			sourceTree = "<group>";
 		};
