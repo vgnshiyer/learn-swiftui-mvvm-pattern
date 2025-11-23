@@ -19,7 +19,7 @@ struct FilmListView: View {
             }
         }
         .navigationDestination(for: Film.self) { film in
-            FilmDetailView(film: film)
+            FilmDetailView(film: film, favoritesViewModel: favoritesViewModel)
         }
     }
 }
@@ -34,20 +34,27 @@ struct FilmRow: View {
     }
     
     var body: some View {
-        HStack {
-            FilmImageView(url: film.image)
-                .frame(width: 100, height: 150)
-            Text(film.title)
-            
-            Spacer()
-            
-            Button {
-                favoritesViewModel.toggleFavorite(filmID: film.id)
-            } label: {
-                Image(systemName: isFavorite ? "heart.fill" : "heart")
-                    .foregroundStyle(isFavorite ? Color.pink : Color.gray)
+        FilmImageView(url: film.image)
+            .frame(width: 100, height: 150)
+        VStack(alignment: .leading) {
+            HStack {
+                Text(film.title)
+                
+                Spacer()
+                
+                FavoriteButton(filmID: film.id, favoritesViewModel: favoritesViewModel)
             }
-            .buttonStyle(.plain)
+            Text("Directed by \(film.director)").font(.caption).foregroundColor(.secondary)
+            Text("Released \(film.releaseYear)").font(.caption).foregroundColor(.secondary)
         }
+        .padding(.top)
     }
+}
+
+
+#Preview {
+    FilmListView(
+        films: [Film.example],
+        favoritesViewModel: FavoritesViewModel.example
+    )
 }

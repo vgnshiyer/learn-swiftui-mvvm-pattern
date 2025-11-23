@@ -43,5 +43,10 @@ class FilmsViewModel {
         }
     }
     
-
+    // MARK: for preview
+    static var example: FilmsViewModel {
+        let vm = FilmsViewModel(service: MockGhibliService())
+        vm.state = .loaded([Film.example])
+        return vm
+    }
 }

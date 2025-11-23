@@ -13,6 +13,8 @@ struct FilmDetailView: View {
     
     @State private var filmDetailViewModel = FilmDetailViewModel()
     
+    let favoritesViewModel: FavoritesViewModel
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -43,6 +45,9 @@ struct FilmDetailView: View {
                 .padding()
             }
         }
+        .toolbar {
+            FavoriteButton(filmID: film.id, favoritesViewModel: favoritesViewModel)
+        }
         .task {
             await filmDetailViewModel.fetch(for: film)
         }
@@ -50,5 +55,7 @@ struct FilmDetailView: View {
 }
 
 #Preview {
-    FilmDetailView(film: Film.example)
+    NavigationStack {
+        FilmDetailView(film: Film.example, favoritesViewModel: FavoritesViewModel.example)
+    }
 }

@@ -36,7 +36,7 @@ struct MoviesScreen: View {
 
 #Preview {
     MoviesScreen(
-        filmsViewModel: FilmsViewModel(service: MockGhibliService()),
-        favoritesViewModel: FavoritesViewModel(service: MockFavoriteStorage())
+        filmsViewModel: FilmsViewModel.example,
+        favoritesViewModel: FavoritesViewModel.example
     )
 }
