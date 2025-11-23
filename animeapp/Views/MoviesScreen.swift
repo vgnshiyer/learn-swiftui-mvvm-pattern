@@ -28,9 +28,6 @@ struct MoviesScreen: View {
             }
             .navigationTitle("Ghibli Movies")
         }
-        .task {
-            await filmsViewModel.fetch()
-        }
     }
 }
 
