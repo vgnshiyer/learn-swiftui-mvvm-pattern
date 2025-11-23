@@ -47,3 +47,5 @@ View <--> ViewModel <--> Model
 * View listens to ViewModel for state changes.
 * ViewModel updates Model, performs logic (like network calls), and exposes clean data for the View.
 * View sends user actions to the ViewModel.
+
+Reference: https://www.youtube.com/watch?v=xB6uf_Aqq9g&t=9797s

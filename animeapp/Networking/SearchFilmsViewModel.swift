@@ -1,15 +1,15 @@
 //
-//  FilmsViewModel.swift
+//  SearchFilmsViewModel.swift
 //  animeapp
 //
-//  Created by Vignesh Iyer on 11/21/25.
+//  Created by Vignesh Iyer on 11/23/25.
 //
 
 import Foundation
 import Observation
 
 @Observable
-class FilmsViewModel {
+class SearchFilmsViewModel {
     
     var state: LoadingState<[Film]> = .idle
     
@@ -19,26 +19,23 @@ class FilmsViewModel {
         self.service = service
     }
     
-    func fetch() async {
+    func fetch(for query: String) async {
+        guard !query.isEmpty else {
+            state = .idle
+            return
+        }
+        state = .loading
         
-        guard !state.isLoading else { return }
-        
-        self.state = .loading
-        
+        try? await Task.sleep(for: .milliseconds(500))
+        guard !Task.isCancelled else { return }
+
         do {
-            let films = try await service.fetchFilms()
+            let films = try await service.searchFilms(for: query)
             self.state = .loaded(films)
         } catch let error as APIError {
             self.state = .error(error.localizedDescription ?? "unknown error")
         } catch {
             self.state = .error("unknown error")
         }
-    }
-    
-    // MARK: for preview
-    static var example: FilmsViewModel {
-        let vm = FilmsViewModel(service: MockGhibliService())
-        vm.state = .loaded([Film.example])
-        return vm
     }
 }

@@ -45,7 +45,8 @@ import Playgrounds
     
     do {
         let (data, response) = try await URLSession.shared.data(from: url)
-        try JSONDecoder().decode([Film].self, from: data)
+        let result = try JSONDecoder().decode([Film].self, from: data)
+        print(result)
     } catch {
         print(error)
     }
